@@ -1,4 +1,4 @@
-name: Public Node Package
+name: Publish Node Package
 
 on:
     release:

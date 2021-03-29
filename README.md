@@ -6,6 +6,7 @@ The Zhao's node package.
 [![](https://img.shields.io/github/license/archtaurus/imzhao.js)](https://github.com/archtaurus/imzhao.js)
 [![](https://img.shields.io/librariesio/github/archtaurus/imzhao.js)](https://github.com/archtaurus/imzhao.js)
 [![](https://img.shields.io/github/last-commit/archtaurus/imzhao.js)](https://github.com/archtaurus/imzhao.js)
+[![Build Status](https://travis-ci.com/archtaurus/imzhao.js.svg?branch=master)](https://travis-ci.com/archtaurus/imzhao.js)
 
 ## Install
 

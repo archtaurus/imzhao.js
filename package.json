@@ -15,7 +15,8 @@
     ],
     "scripts": {
         "test": "jest",
-        "test:watch": "jest --watchAll",
+        "test:watch": "jest --watch",
+        "test:watchall": "jest --watchAll",
         "prepublishOnly": "npm test"
     },
     "repository": {

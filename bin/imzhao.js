@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const { version } = require('../package.json')
 const { program } = require('commander')
+const chalk = require('chalk')
 const imzhao = require('../lib')
 
 program
@@ -10,7 +11,7 @@ program
         const numbers = process.argv.slice(3)
         if (numbers) {
             const result = imzhao.math.gcd(...numbers)
-            console.log(result)
+            console.log('result:' + chalk.bold.yellow.underline(` ${result} `))
         }
     })
 
@@ -21,7 +22,7 @@ program
         const numbers = process.argv.slice(3)
         if (numbers) {
             const result = imzhao.math.lcm(...numbers)
-            console.log(result)
+            console.log('result:' + chalk.bold.yellow.underline(` ${result} `))
         }
     })
 

@@ -5,6 +5,7 @@ const imzhao = require('../lib')
 
 program
     .command('gcd')
+    .description('Calculte GCD')
     .action(() => {
         const numbers = process.argv.slice(3)
         if (numbers) {
@@ -15,6 +16,7 @@ program
 
 program
     .command('lcm')
+    .description('Calculte LCM')
     .action(() => {
         const numbers = process.argv.slice(3)
         if (numbers) {

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
+const { version } = require('../package.json')
 const { program } = require('commander')
 const imzhao = require('../lib')
-const { version } = require('../package.json')
 
 program
     .command('publicip')

@@ -1,29 +1,47 @@
 const imzhao = require("../lib")
 
 describe("imzhao.math", () => {
-    test('circle.area(1) should return PI', () => {
-        const area = imzhao.math.circle.area(1)
-        expect(area).toEqual(imzhao.math.PI)
+
+    const { PI, Circle } = imzhao.math
+    test('Circle(1).area should return PI', () => {
+        const circle = new Circle(1)
+        expect(circle.area).toEqual(PI)
+        expect(Circle.area(1)).toEqual(PI)
+        expect(circle.perimeter).toEqual(PI * 2)
+        expect(Circle.perimeter(1)).toEqual(PI * 2)
     })
-    test('circle.area(2) should return PI*4', () => {
-        const area = imzhao.math.circle.area(2)
-        expect(area).toEqual(imzhao.math.PI * 4)
+
+    const { gcd } = imzhao.math
+    test('gcd() should return undefined', () => {
+        expect(gcd()).toEqual(undefined)
     })
-    test('circle.perimeter(0.5) should return PI', () => {
-        const perimeter = imzhao.math.circle.perimeter(0.5)
-        expect(perimeter).toEqual(imzhao.math.PI)
-    })
-    test('circle.perimeter(1) should return PI*2', () => {
-        const perimeter = imzhao.math.circle.perimeter(1)
-        expect(perimeter).toEqual(imzhao.math.PI * 2)
-    })
-    test('gcd(54, 24) should return 6', () => {
-        expect(imzhao.math.gcd(54, 24)).toEqual(6)
+    test('gcd(13) should return 13', () => {
+        expect(gcd(13)).toEqual(13)
     })
     test('gcd(13, 7) should return 1', () => {
-        expect(imzhao.math.gcd(13, 7)).toEqual(1)
+        expect(gcd(13, 7)).toEqual(1)
+    })
+    test('gcd(13, 13) should return 13', () => {
+        expect(gcd(13, 13)).toEqual(13)
+    })
+    test('gcd(54, 24, 78) should return 6', () => {
+        expect(gcd(54, 24, 78)).toEqual(6)
+    })
+
+    const { lcm } = imzhao.math
+    test('lcm() should return undefined', () => {
+        expect(lcm()).toEqual(undefined)
+    })
+    test('lcm(13) should return 13', () => {
+        expect(lcm(13)).toEqual(13)
+    })
+    test('lcm(13, 13) should return 13', () => {
+        expect(lcm(13, 13)).toEqual(13)
     })
     test('lcm(30, 45) should return 90', () => {
-        expect(imzhao.math.lcm(30, 45)).toEqual(90)
+        expect(lcm(30, 45)).toEqual(90)
+    })
+    test('lcm(4, 6, 8) should return 24', () => {
+        expect(lcm(4, 6, 8)).toEqual(24)
     })
 })

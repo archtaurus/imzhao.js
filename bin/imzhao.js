@@ -11,7 +11,7 @@ program
         const numbers = process.argv.slice(3)
         if (numbers) {
             const result = imzhao.math.gcd(...numbers)
-            console.log('result:' + chalk.bold.yellow.underline(` ${result} `))
+            console.log(result)
         }
     })
 
@@ -22,7 +22,7 @@ program
         const numbers = process.argv.slice(3)
         if (numbers) {
             const result = imzhao.math.lcm(...numbers)
-            console.log('result:' + chalk.bold.yellow.underline(` ${result} `))
+            console.log(result)
         }
     })
 

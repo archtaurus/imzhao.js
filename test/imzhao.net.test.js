@@ -15,9 +15,9 @@ describe("imzhao.net", () => {
         expect(result).toBe(text)
     })
 
-    if (process.env.SMTP_MAIL) {
-        const { smtp } = imzhao.net
-        test('sendMail works', (done) => {
+    const { smtp } = imzhao.net
+    test('sendMail works', (done) => {
+        if (process.env.SMTP_MAIL) {
             expect(smtp).toBeTruthy()
             const message = {
                 from: process.env.SMTP_MAIL,
@@ -30,7 +30,6 @@ describe("imzhao.net", () => {
                 done()
             }
             smtp.sendMail(message, callback)
-        })
-    }
-
+        }
+    })
 })

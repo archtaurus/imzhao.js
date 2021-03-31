@@ -15,21 +15,20 @@ describe("imzhao.net", () => {
         expect(result).toBe(text)
     })
 
-    const { smtp } = imzhao.net
-    test('sendMail works', (done) => {
-        if (process.env.SMTP_MAIL) {
-            expect(smtp).toBeTruthy()
-            const message = {
-                from: process.env.SMTP_MAIL,
-                to: process.env.SMTP_MAIL,
-                subject: 'imzhao.net.sendMail test mail',
-                text: 'imzhao.net.sendMail test mail',
-            }
-            const callback = (err, info) => {
-                expect(info.response.match(/^250 OK/)).toBeTruthy()
-                done()
-            }
-            smtp.sendMail(message, callback)
-        }
-    })
+    // const { smtp } = imzhao.net
+    // test('sendMail works', (done) => {
+    //     expect(smtp).toBeTruthy()
+    //     expect(process.env.SMTP_MAIL).toBeTruthy()
+    //     const message = {
+    //         from: process.env.SMTP_MAIL,
+    //         to: process.env.SMTP_MAIL,
+    //         subject: 'imzhao.net.sendMail test mail',
+    //         text: 'imzhao.net.sendMail test mail',
+    //     }
+    //     const callback = (err, info) => {
+    //         expect(info.response.match(/^250 OK/)).toBeTruthy()
+    //         done()
+    //     }
+    //     smtp.sendMail(message, callback)
+    // })
 })

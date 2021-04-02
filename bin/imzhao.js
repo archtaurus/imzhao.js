@@ -8,7 +8,7 @@ program
     .description('Calculate GCD of given numbers.')
     .action((numbers) => {
         const result = imzhao.math.gcd(...numbers)
-        console.log(result)
+        console.info(result)
     })
 
 program
@@ -16,7 +16,7 @@ program
     .description('Calculate LCM of given numbers.')
     .action((numbers) => {
         const result = imzhao.math.lcm(...numbers)
-        console.log(result)
+        console.info(result)
     })
 
 program
@@ -24,7 +24,7 @@ program
     .description('Show your public IP address.')
     .action(async () => {
         const publicIP = await imzhao.net.getPublicIP()
-        console.log(publicIP)
+        console.info(publicIP)
     })
 
 program

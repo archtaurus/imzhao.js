@@ -4,25 +4,19 @@ const { program } = require('commander')
 const imzhao = require('../lib')
 
 program
-    .command('gcd')
-    .description('Calculate GCD')
-    .action(() => {
-        const numbers = process.argv.slice(3)
-        if (numbers) {
-            const result = imzhao.math.gcd(...numbers)
-            console.log(result)
-        }
+    .command('gcd <numbers...>')
+    .description('Calculate GCD of given numbers.')
+    .action((numbers) => {
+        const result = imzhao.math.gcd(...numbers)
+        console.info(result)
     })
 
 program
-    .command('lcm')
-    .description('Calculate LCM')
-    .action(() => {
-        const numbers = process.argv.slice(3)
-        if (numbers) {
-            const result = imzhao.math.lcm(...numbers)
-            console.log(result)
-        }
+    .command('lcm <numbers...>')
+    .description('Calculate LCM of given numbers.')
+    .action((numbers) => {
+        const result = imzhao.math.lcm(...numbers)
+        console.info(result)
     })
 
 program
@@ -30,11 +24,10 @@ program
     .description('Show your public IP address.')
     .action(async () => {
         const publicIP = await imzhao.net.getPublicIP()
-        console.log(publicIP)
+        console.info(publicIP)
     })
 
-const options = program
+program
     .version(version)
-    .description(description)
+    .description('imzhao command line tool.')
     .parse(process.argv)
-    .opts()

@@ -1,7 +1,6 @@
-const imzhao = require("../lib")
+const imzhao = require('imzhao')
 
-describe("imzhao.math", () => {
-
+describe('imzhao.math', () => {
     const { PI, Circle } = imzhao.math
     test('Circle(1).area should return PI', () => {
         const circle = new Circle(1)

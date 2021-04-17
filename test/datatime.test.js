@@ -1,9 +1,7 @@
-const { datetime } = require("../lib")
+const { datetime } = require('imzhao')
 
-describe("imzhao.datetime", () => {
-
+describe('imzhao.datetime', () => {
     test('test', () => {
         console.log(datetime.now.datetimeString)
     })
-
 })

@@ -1,7 +1,6 @@
-const imzhao = require("../lib")
+const imzhao = require('imzhao')
 
-describe("imzhao.net", () => {
-
+describe('imzhao.net', () => {
     const { isIPv4, getPublicIP } = imzhao.net
     test('getPublicIP() should return IP address', async () => {
         const result = await getPublicIP()

@@ -1,24 +1,21 @@
 const imzhao = require('imzhao')
 
-describe('imzhao.net', () => {
-    test('getPublicIP() should return IP address', async () => {
-        const { isIPv4, getPublicIP } = imzhao.net
-        const result = await getPublicIP()
-        expect(isIPv4(result)).toEqual(true)
+describe('imzhao.algorithm', () => {
+    const { 击鼓传花 } = imzhao.algorithm
+
+    test('击鼓传花', () => {
+        const names = ['tom', 'jerry', 'jack']
+        expect(击鼓传花([], 3)).toEqual(undefined)
+        expect(击鼓传花(names, 1)).toEqual('jack')
+        expect(击鼓传花(names, 3)).toEqual('jerry')
     })
 
-    test('getJSON', async () => {
-        const { getJSON } = imzhao.net
-        const result = await getJSON('https://httpbin.org/ip')
-        expect(result.hasOwnProperty('origin')).toBeTruthy()
-    })
-
-    test('htmlToText works', () => {
-        const { htmlToText } = imzhao.net
-        const text = 'HELLO,WORLD'
-        const result = htmlToText(`<h1>${text}</h1>`)
-        expect(result).toBe(text)
-    })
+    // const { htmlToText } = imzhao.net
+    // test('htmlToText works', () => {
+    //     const text = 'HELLO,WORLD'
+    //     const result = htmlToText(`<h1>${text}</h1>`)
+    //     expect(result).toBe(text)
+    // })
 
     // const { smtp } = imzhao.net
     // test('sendMail works', (done) => {

@@ -1,7 +1,20 @@
+// TODO: this test is NOT 100% finished!
 const imzhao = require('imzhao')
 
 describe('imzhao.math', () => {
     const { PI, Circle } = imzhao.math
+
+    test('constants', () => {
+        expect(imzhao.math.PI).toEqual(Math.PI)
+        expect(imzhao.math.TAU).toEqual(Math.PI * 2)
+        expect(imzhao.math.HALF_PI).toEqual(Math.PI / 2)
+    })
+
+    test('abs', () => {
+        expect(imzhao.math.abs(99)).toEqual(99)
+        expect(imzhao.math.abs(-99)).toEqual(99)
+    })
+
     test('Circle(1).area should return PI', () => {
         const circle = new Circle(1)
         expect(circle.area).toEqual(PI)

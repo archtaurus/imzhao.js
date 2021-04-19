@@ -30,7 +30,7 @@ describe('imzhao.math', () => {
     })
 
     test('random', () => {
-        const { randomInt, randomChoose } = math
+        const { randomInt, randomChoose, shuffle } = math
 
         expect(randomInt(0, 0)).toEqual(0)
         let zeros = 0

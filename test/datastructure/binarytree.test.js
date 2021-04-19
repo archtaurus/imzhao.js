@@ -1,4 +1,5 @@
 const { BinarySearchTree } = require('../../lib/datastructure')
+const { randomInt } = require('../../lib/math')
 
 describe('imzhao.datastructure.binarytree', () => {
     test('clear', () => {
@@ -42,13 +43,17 @@ describe('imzhao.datastructure.binarytree', () => {
 
     test('min and max', () => {
         const tree = new BinarySearchTree()
-        tree.insert(2)
-        tree.insert(1)
-        tree.insert(3)
-        tree.insert(4)
-        const min = tree.min()
-        const max = tree.max()
-        expect(min.data).toEqual(1)
-        expect(max.data).toEqual(4)
+        let min, max
+        for (let i = 0; i < 1000; i++) {
+            const random = randomInt(-10000, 10000)
+            tree.insert(random)
+            if (!min || random < min) min = random
+            if (!max || random > max) max = random
+        }
+        const minNode = tree.min()
+        const maxNode = tree.max()
+        console.log({ min, minNode, max, maxNode, size: tree.size })
+        expect(minNode.data === min).toBeTruthy()
+        expect(maxNode.data === max).toBeTruthy()
     })
 })

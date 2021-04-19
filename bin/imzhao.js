@@ -7,7 +7,7 @@ program
     .command('gcd <numbers...>')
     .description('Calculate GCD of given numbers.')
     .action((numbers) => {
-        const result = imzhao.math.gcd(...numbers)
+        const result = imzhao.math.gcdMany(...numbers)
         console.info(result)
     })
 
@@ -15,7 +15,7 @@ program
     .command('lcm <numbers...>')
     .description('Calculate LCM of given numbers.')
     .action((numbers) => {
-        const result = imzhao.math.lcm(...numbers)
+        const result = imzhao.math.lcmMany(...numbers)
         console.info(result)
     })
 
@@ -27,7 +27,4 @@ program
         console.info(publicIP)
     })
 
-program
-    .version(version)
-    .description('imzhao command line tool.')
-    .parse(process.argv)
+program.version(version).description('imzhao command line tool.').parse(process.argv)

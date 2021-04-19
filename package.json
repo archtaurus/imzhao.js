@@ -33,7 +33,6 @@
     },
     "dependencies": {
         "axios": "^0.21.1",
-        "chalk": "^4.1.0",
         "commander": "^7.2.0",
         "html-to-text": "^7.0.0",
         "lodash": "^4.17.21",

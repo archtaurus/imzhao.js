@@ -8,7 +8,7 @@ describe('imzhao.datastructure.BinaryTree', () => {
         expect(tree.hasOwnProperty('size')).toBeTruthy()
         expect(tree.hasOwnProperty('isEmpty')).toBeTruthy()
         expect(tree.hasOwnProperty('insert')).toBeTruthy()
-        expect(tree.hasOwnProperty('delete')).toBeTruthy()
+        expect(tree.hasOwnProperty('remove')).toBeTruthy()
     })
 
     test('insert', () => {

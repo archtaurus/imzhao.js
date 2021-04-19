@@ -1,8 +1,6 @@
-const imzhao = require('imzhao')
+const { BinarySearchTree } = require('../../lib/datastructure')
 
 describe('imzhao.datastructure.binarytree', () => {
-    const { BinarySearchTree } = imzhao.datastructure
-
     test('clear', () => {
         const tree = new BinarySearchTree()
         expect(tree.insert(1)).toBeTruthy()

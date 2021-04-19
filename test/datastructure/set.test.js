@@ -1,6 +1,6 @@
-const imzhao = require('imzhao')
+require('../../lib/datastructure/set')
 
-describe('imzhao.datastructure.linkedlist', () => {
+describe('imzhao.datastructure.set', () => {
     const list = [1, 2, 3]
     const set = new Set(list)
 

@@ -1,5 +1,4 @@
-const imzhao = require('imzhao')
-const { Stack } = imzhao.datastructure
+const { Stack } = require('../../lib/datastructure')
 const list = [1, 2, 3]
 const item = 4
 const stack = new Stack(list)

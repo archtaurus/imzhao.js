@@ -1,5 +1,5 @@
 // TODO: this test is NOT 100% finished!
-const math = require('../../lib').math
+const { math } = require('../../lib')
 
 describe('imzhao.math', () => {
     const { PI, TAU, HALF_PI } = math

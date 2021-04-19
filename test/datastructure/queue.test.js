@@ -1,7 +1,6 @@
-const imzhao = require('imzhao')
+const { Queue, PriorityQueue } = require('../../lib/datastructure')
 
 describe('imzhao.datastructure.queue', () => {
-    const { Queue } = imzhao.datastructure
     const list = [1, 2, 3]
     const item = 4
     const queue = new Queue(list)
@@ -39,7 +38,6 @@ describe('imzhao.datastructure.queue', () => {
 })
 
 describe('imzhao.datastructure.priorityQueue', () => {
-    const { PriorityQueue } = imzhao.datastructure
     const priorityQueue = new PriorityQueue()
     const elementLow = 'low'
     const priorityLow = 1

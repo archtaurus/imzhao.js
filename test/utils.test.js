@@ -1,4 +1,4 @@
-const { utils } = require('imzhao')
+const { utils } = require('../lib')
 
 describe('imzhao.utils', () => {
     test('should has these properties', () => {

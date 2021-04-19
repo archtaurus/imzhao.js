@@ -1,7 +1,6 @@
-const imzhao = require('imzhao')
+const { LinkedList } = require('../../lib/datastructure')
 
 describe('imzhao.datastructure.linkedlist', () => {
-    const { LinkedList } = imzhao.datastructure
     const list = new LinkedList()
     const appendItem1 = 'appendItem1'
     const appendItem2 = 'appendItem2'

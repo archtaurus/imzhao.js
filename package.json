@@ -1,6 +1,6 @@
 {
     "name": "imzhao",
-    "version": "0.2.7",
+    "version": "0.2.8",
     "description": "The Zhao's node package.",
     "main": "lib/index.js",
     "bin": {

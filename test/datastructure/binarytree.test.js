@@ -2,43 +2,51 @@ const { BinarySearchTree } = require('../../lib/datastructure')
 const { randomInt } = require('../../lib/math')
 
 describe('imzhao.datastructure.binarytree', () => {
-    test('clear', () => {
-        const tree = new BinarySearchTree()
-        expect(tree.insert(1)).toBeTruthy()
-        expect(tree.size).toEqual(1)
-        expect(tree.insert(2)).toBeTruthy()
-        expect(tree.size).toEqual(2)
-        tree.clear()
-        expect(tree.isEmpty()).toBeTruthy()
-    })
+    const tree = new BinarySearchTree()
 
-    test('insert', () => {
-        const tree = new BinarySearchTree()
+    test('create and insert some nodes', () => {
+        expect(tree.root).toBeNull()
         expect(tree.size).toEqual(0)
-        expect(tree.insert(2)).toBeTruthy()
+        // insert 100 as root
+        expect(tree.insert(100)).toBeTruthy()
         expect(tree.size).toEqual(1)
-        expect(tree.insert(1)).toBeTruthy()
+        expect(tree.root.left).toBeNull()
+        expect(tree.root.right).toBeNull()
+        expect(tree.root.data).toEqual(100)
+        // insert 50 should at leftside
+        expect(tree.insert(50)).toBeTruthy()
         expect(tree.size).toEqual(2)
-        expect(tree.insert(3)).toBeTruthy()
+        expect(tree.root.left.data).toEqual(50)
+        expect(tree.root.right).toBeNull()
+        // insert 200 should at rightside
+        expect(tree.insert(200)).toBeTruthy()
         expect(tree.size).toEqual(3)
-        expect(tree.insert(4)).toBeTruthy()
+        expect(tree.root.right.data).toEqual(200)
+        // insert 10 should at leftside
+        expect(tree.insert(10)).toBeTruthy()
         expect(tree.size).toEqual(4)
-        expect(tree.insert(3)).toBeFalsy()
-        expect(tree.size).toEqual(4)
+        expect(tree.root.left.left.data).toEqual(10)
+        // insert 75 should at rightside
+        expect(tree.insert(75)).toBeTruthy()
+        expect(tree.size).toEqual(5)
+        expect(tree.root.left.right.data).toEqual(75)
+        // insert 250 should at rightside
+        expect(tree.insert(250)).toBeTruthy()
+        expect(tree.size).toEqual(6)
+        expect(tree.root.right.right.data).toEqual(250)
+        // insert 150 should at leftside
+        expect(tree.insert(150)).toBeTruthy()
+        expect(tree.size).toEqual(7)
+        expect(tree.root.right.left.data).toEqual(150)
     })
 
     test('search', () => {
-        const tree = new BinarySearchTree()
-        expect(tree.search(1)).toEqual(null)
-        tree.insert(2)
-        tree.insert(1)
-        tree.insert(3)
-        tree.insert(4)
-        expect(tree.search(5)).toEqual(null)
-        const node = tree.search(3)
-        expect(node.data).toEqual(3)
-        expect(node.left).toEqual(null)
-        expect(node.right.data).toEqual(4)
+        expect(tree.search()).toBeNull()
+        expect(tree.search(1)).toBeNull()
+        const node = tree.search(100)
+        expect(node.data).toEqual(100)
+        expect(node.left.data).toEqual(50)
+        expect(node.right.data).toEqual(200)
     })
 
     test('min and max', () => {
@@ -52,8 +60,14 @@ describe('imzhao.datastructure.binarytree', () => {
         }
         const minNode = tree.min()
         const maxNode = tree.max()
-        // console.log({ min, minNode, max, maxNode, size: tree.size })
         expect(minNode.data === min).toBeTruthy()
         expect(maxNode.data === max).toBeTruthy()
+    })
+
+    test('clear and isEmpty', () => {
+        expect(tree.size).toEqual(7)
+        tree.clear()
+        expect(tree.size).toEqual(0)
+        expect(tree.isEmpty()).toBeTruthy()
     })
 })

@@ -64,7 +64,6 @@ describe('imzhao.math', () => {
         expect(bananas > 0).toBeTruthy()
         expect(cherries > 0).toBeTruthy()
         expect(others).toEqual(0)
-        console.log({ zeros, ones, twos, apples, bananas, cherries, others })
     })
 
     // test('Circle', () => {

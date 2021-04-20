@@ -52,7 +52,7 @@ describe('imzhao.datastructure.binarytree', () => {
         }
         const minNode = tree.min()
         const maxNode = tree.max()
-        console.log({ min, minNode, max, maxNode, size: tree.size })
+        // console.log({ min, minNode, max, maxNode, size: tree.size })
         expect(minNode.data === min).toBeTruthy()
         expect(maxNode.data === max).toBeTruthy()
     })

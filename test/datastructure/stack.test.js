@@ -1,34 +1,48 @@
 const { Stack } = require('../../lib/datastructure')
-const list = [1, 2, 3]
-const item = 4
-const stack = new Stack(list)
 
 describe('imzhao.datastructure.stack', () => {
     test('create', () => {
-        expect(new Stack().size()).toEqual(0)
-        expect(stack.size()).toEqual(list.length)
-        expect(stack.isEmpty()).toBeFalsy()
+        const stack = new Stack()
+        expect(stack.size()).toEqual(0)
+        expect(stack.isEmpty()).toBeTruthy()
     })
 
-    test('items', () => {
-        expect(stack.items().toString()).toBe(list.toString())
-    })
-
-    test('peek', () => {
-        expect(stack.peek()).toEqual(list[list.length - 1])
+    test('values', () => {
+        expect(new Stack().values()).toEqual([])
+        expect(new Stack([1, 2, 3]).values()).toEqual([1, 2, 3])
     })
 
     test('push', () => {
-        stack.push(item)
-        expect(stack.size()).toEqual(list.length + 1)
+        const stack = new Stack()
+        stack.push(1)
+        expect(stack.size()).toEqual(1)
+        expect(stack.toString()).toEqual('1')
+        stack.push(2)
+        expect(stack.toString()).toEqual('1,2')
     })
 
     test('pop', () => {
-        expect(stack.pop()).toEqual(item)
-        expect(stack.size()).toEqual(list.length)
+        const stack = new Stack([1, 2, 3])
+        expect(stack.pop()).toEqual(3)
+        expect(stack.size()).toEqual(2)
+        expect(stack.pop()).toEqual(2)
+        expect(stack.size()).toEqual(1)
+        expect(stack.pop()).toEqual(1)
+        expect(stack.size()).toEqual(0)
+        expect(stack.pop()).toBeUndefined()
+    })
+
+    test('peek', () => {
+        const stack = new Stack([])
+        expect(stack.peek()).toBeUndefined()
+        stack.push(1)
+        expect(stack.peek()).toEqual(1)
+        stack.push(2)
+        expect(stack.peek()).toEqual(2)
     })
 
     test('clear to empty', () => {
+        const stack = new Stack([1, 2, 3])
         stack.clear()
         expect(stack.size()).toEqual(0)
         expect(stack.isEmpty()).toBeTruthy()

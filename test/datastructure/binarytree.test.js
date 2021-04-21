@@ -64,6 +64,74 @@ describe('imzhao.datastructure.binarytree', () => {
         expect(maxNode.data === max).toBeTruthy()
     })
 
+    test('remove', () => {
+        const tree = new BinarySearchTree()
+        expect(tree.remove()).toBeFalsy()
+        expect(tree.remove(0)).toBeFalsy()
+        // 删除唯一根节点
+        tree.insert(1)
+        expect(tree.remove()).toBeFalsy()
+        expect(tree.remove(0)).toBeFalsy()
+        expect(tree.size).toEqual(1)
+        expect(tree.remove(1)).toBeTruthy()
+        expect(tree.isEmpty()).toBeTruthy()
+        // 删除叶子节点
+        tree.insert(1)
+        tree.insert(2)
+        expect(tree.remove(2)).toBeTruthy()
+        expect(tree.size).toEqual(1)
+        expect(tree.root.data).toEqual(1)
+        expect(tree.root.left).toBeNull()
+        expect(tree.root.right).toBeNull()
+        // 删除有一片叶子的节点
+        tree.insert(2)
+        tree.insert(3)
+        expect(tree.remove(2)).toBeTruthy()
+        expect(tree.size).toEqual(2)
+        expect(tree.search(3)).toEqual(tree.root.right)
+        expect(tree.search(3).parent).toEqual(tree.root)
+        tree.clear()
+        expect(tree.size).toEqual(0)
+        expect(tree.root).toBeNull()
+        // 删除两侧都有子树的节点
+        tree.insert(15)
+        tree.insert(10)
+        tree.insert(20)
+        tree.insert(8)
+        tree.insert(12)
+        tree.insert(17)
+        tree.insert(30)
+        tree.insert(16)
+        tree.insert(18)
+        tree.insert(19)
+        expect(tree.size).toEqual(10)
+
+        const root = tree.search(15)
+        const node17 = tree.search(17)
+        const node18 = tree.search(18)
+        const node19 = tree.search(19)
+        // const node20 = tree.search(20)
+        const node30 = tree.search(30)
+        // 根节点是 15 节点
+        expect(tree.root === root).toBeTruthy()
+        // 18 节点以下 最大的是 19
+        expect(tree.max(node17)).toEqual(node19)
+        // 删除 20 节点
+        expect(tree.remove(20)).toBeTruthy()
+        expect(tree.size).toEqual(9)
+        // 18 节点右节点应为空
+        expect(node18.right).toBeNull()
+        // root 和 19 节点应相连
+        expect(root.right).toEqual(node19)
+        expect(node19.parent).toEqual(root)
+        // 19 和 17 节点应相连
+        expect(node19.left).toEqual(node17)
+        expect(node17.parent).toEqual(node19)
+        // 19 和 30 节点应相连
+        expect(node19.right).toEqual(node30)
+        expect(node30.parent).toEqual(node19)
+    })
+
     test('clear and isEmpty', () => {
         expect(tree.size).toEqual(7)
         tree.clear()

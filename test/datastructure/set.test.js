@@ -22,6 +22,7 @@ describe('imzhao.datastructure.set', () => {
 
     test('has', () => {
         expect(set.has(list[0])).toBeTruthy()
+        expect(set.has('hello')).toBeFalsy()
     })
 
     test('isSuperset', () => {
@@ -54,15 +55,14 @@ describe('imzhao.datastructure.set', () => {
 
     test('subtraction', () => {
         expect(set.subtraction(new Set([]))).toEqual(set)
-        expect(set.subtraction(new Set([1, 2]))).toEqual(new Set([3]))
-        expect(set.subtraction(new Set([1, 2, 3]))).toEqual(new Set())
-        expect(set.subtraction(new Set([4, 5, 6]))).toEqual(set)
+        expect(set.subtraction(new Set([4, 5, 6, 7, 8]))).toEqual(new Set([1, 2, 3]))
+        expect(set.subtraction(new Set([1, 2, 3, 4, 5, 6]))).toEqual(new Set())
+        expect(set).toEqual(new Set())
     })
 
     test('difference', () => {
-        expect(set.difference(new Set([]))).toEqual(set)
-        expect(set.difference(new Set([1, 2, 3]))).toEqual(new Set())
-        expect(set.difference(new Set([4, 5, 6]))).toEqual(new Set([1, 2, 3, 4, 5, 6]))
-        expect(set.difference(new Set([1, 2, 3, 4, 5, 6]))).toEqual(new Set([4, 5, 6]))
+        const a = new Set([1, 2, 3, 4, 5])
+        const b = new Set([3, 4, 5, 6, 7])
+        expect(a.difference(b)).toEqual(new Set([1, 2, 6, 7]))
     })
 })

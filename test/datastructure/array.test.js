@@ -1,3 +1,5 @@
+require('../../lib')
+
 describe('javascript native Array object operations', () => {
     const array = Array.from([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 
@@ -152,5 +154,14 @@ describe('javascript native Array object operations', () => {
         const list = [1, 2, 3, 4, 5, 6]
         expect(list.some((i) => i > 3)).toBeTruthy()
         expect(list.some((i) => i > 10)).toBeFalsy()
+    })
+
+    // reduce, reduceRight not tested
+
+    // under this line is custom functions for array
+    test('extends(list) extends array with another', () => {
+        const list = [1, 2, 3]
+        expect(list.extends([4, 5, 6])).toEqual([1, 2, 3, 4, 5, 6])
+        expect(list).toEqual([1, 2, 3, 4, 5, 6])
     })
 })

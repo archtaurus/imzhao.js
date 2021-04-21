@@ -2,6 +2,7 @@
 
 The Zhao's node package.
 
+[![Test and Publish](https://github.com/archtaurus/imzhao.js/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/archtaurus/imzhao.js/actions/workflows/npm-publish.yml)
 [![Package](https://img.shields.io/npm/v/imzhao)](https://www.npmjs.com/package/imzhao)
 [![License](https://img.shields.io/github/license/archtaurus/imzhao.js)](https://github.com/archtaurus/imzhao.js/blob/master/LICENSE)
 [![Dependencies Status](https://status.david-dm.org/gh/archtaurus/imzhao.js.svg)](https://www.npmjs.com/package/imzhao?activeTab=dependencies)

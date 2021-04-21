@@ -104,6 +104,7 @@ describe('imzhao.datastructure.binarytree', () => {
         tree.insert(16)
         tree.insert(18)
         tree.insert(19)
+        expect(tree.height()).toEqual(5)
         expect(tree.size).toEqual(10)
 
         const root = tree.search(15)

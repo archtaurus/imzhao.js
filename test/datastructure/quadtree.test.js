@@ -6,7 +6,7 @@ const p4 = { x: 25, y: 75 }
 const p5 = { x: 50, y: 50 }
 
 describe('imzhao.datastructure.QuadTree', () => {
-    test('create an empty tree', () => {
+    test('create empty tree', () => {
         const tree = new QuadTree(10, 20, 100, 200, 4)
         expect(tree.x).toEqual(10)
         expect(tree.y).toEqual(20)
@@ -23,7 +23,7 @@ describe('imzhao.datastructure.QuadTree', () => {
         expect(tree.subTrees).toEqual([])
     })
 
-    test('contains', () => {
+    test('contains() works', () => {
         const tree = new QuadTree(0, 0, 100, 100, 4)
         expect(tree.contains(p1)).toBeTruthy()
         expect(tree.contains(p2)).toBeTruthy()
@@ -39,7 +39,7 @@ describe('imzhao.datastructure.QuadTree', () => {
         expect(tree.contains({ x: 0, y: -1 })).toBeFalsy()
     })
 
-    test('insert points outside the tree', () => {
+    test('insert() outside should fail', () => {
         const tree = new QuadTree(0, 0, 100, 100, 4)
         expect(tree.insert({ x: -1, y: 0 })).toBeFalsy()
         expect(tree.insert({ x: 100, y: 0 })).toBeFalsy()
@@ -49,7 +49,7 @@ describe('imzhao.datastructure.QuadTree', () => {
         expect(tree.subTrees).toEqual([])
     })
 
-    test('insert points', () => {
+    test('insert points works', () => {
         const tree = new QuadTree(0, 0, 100, 100, 4)
         expect(tree.insert(p1)).toBeTruthy()
         expect(tree.elements.length).toEqual(1)
@@ -72,7 +72,7 @@ describe('imzhao.datastructure.QuadTree', () => {
         expect(tree.subTrees[3].elements.length).toEqual(1)
     })
 
-    test('insert many points', () => {
+    test('insert many points ok', () => {
         const tree = new QuadTree(0, 0, 100, 100, 4)
         expect(tree.insertMany([p1, p2, p3, p4, p5])).toBeTruthy()
         expect(tree.elements.length).toEqual(0)
@@ -83,7 +83,7 @@ describe('imzhao.datastructure.QuadTree', () => {
         expect(tree.subTrees[3].elements.length).toEqual(1)
     })
 
-    test('query', () => {
+    test('query() works', () => {
         const tree = new QuadTree(0, 0, 100, 100, 4, [p1, p2, p3, p4, p5])
         expect(tree.elements.length).toEqual(0)
         expect(tree.query(0, 0, 50, 50)).toEqual([p1])

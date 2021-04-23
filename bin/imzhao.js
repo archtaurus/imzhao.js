@@ -4,6 +4,15 @@ const { program } = require('commander')
 const imzhao = require('../lib')
 
 program
+    .command('pi <n>')
+    .description('Output n digits of pi.')
+    .action((n) => {
+        process.stdout.write('3.')
+        for (const d of imzhao.math.piGenerator(n)) process.stdout.write(`${d}`)
+        process.stdout.write('\n')
+    })
+
+program
     .command('gcd <numbers...>')
     .description('Calculate GCD of given numbers.')
     .action((numbers) => {

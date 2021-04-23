@@ -18,7 +18,10 @@ describe('imzhao.math', () => {
     test('gcd', () => {
         const { gcd, gcdMany } = math
         expect(gcd()).toBeNaN()
+        expect(gcd(3, -9)).toEqual(3)
+        expect(gcd(-3, 9)).toEqual(-3)
         expect(gcd(13, 7)).toEqual(1)
+        expect(gcd(13, 0)).toEqual(13)
         expect(gcd(13, 13)).toEqual(13)
         expect(gcdMany(54, 24, 78)).toEqual(6)
         expect(gcdMany()).toBeNaN()
@@ -27,10 +30,28 @@ describe('imzhao.math', () => {
     test('lcm', () => {
         const { lcm, lcmMany } = math
         expect(lcm()).toBeNaN()
+        expect(lcm(13, 0)).toEqual(0)
         expect(lcm(13, 13)).toEqual(13)
         expect(lcm(30, 45)).toEqual(90)
         expect(lcmMany(4, 6, 8)).toEqual(24)
         expect(lcmMany()).toBeNaN()
+    })
+
+    test('gcd 和 lcm 有一些性质', () => {
+        const { randomInt, gcd, lcm, abs } = math
+        const a = randomInt(1, 1000)
+        const b = randomInt(1, 1000)
+        const c = randomInt(1, 1000)
+        for (let i = 0; i < 100; i++) {
+            // gcd(a, b) === gcd(b, a)
+            expect(gcd(a, b) === gcd(b, a)).toBeTruthy()
+            // gcd(a,b) x lcm(a,b) === |a x b|
+            expect(gcd(a, b) * lcm(a, b) === abs(a * b)).toBeTruthy()
+            // gcd(a, lcm(b, c)) === lcm(gcd(a, b), gcd(a, c)) 交换律
+            expect(gcd(a, lcm(b, c)) === lcm(gcd(a, b), gcd(a, c))).toBeTruthy()
+            // lcm(a, gcd(b, c)) === gcd(lcm(a, b), lcm(a, c)) 交换律
+            expect(lcm(a, gcd(b, c)) === gcd(lcm(a, b), lcm(a, c))).toBeTruthy()
+        }
     })
 
     test('random', () => {

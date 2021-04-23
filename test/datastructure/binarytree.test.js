@@ -159,45 +159,13 @@ describe('imzhao.datastructure.binarytree', () => {
          *            16  18
          *                  19
          */
-
         // tree.preOrderTraverse() //-> 15 10 8 12 20 17 16 18 19 30
-        const preOrder = []
-        const preOrderTraverse = tree.preOrderTraverse()
-        while (true) {
-            const { done, value } = preOrderTraverse.next()
-            if (done) break
-            preOrder.push(value)
-        }
-        expect(preOrder.toString()).toEqual('15,10,8,12,20,17,16,18,19,30')
-
+        expect([...tree.preOrderTraverse()].toString()).toEqual('15,10,8,12,20,17,16,18,19,30')
         // tree.inOrderTraverse() //-> 15 10 8 12 20 17 16 18 19 30
-        const inOrder = []
-        const inOrderTraverse = tree.inOrderTraverse()
-        while (true) {
-            const { done, value } = inOrderTraverse.next()
-            if (done) break
-            inOrder.push(value)
-        }
-        expect(inOrder.toString()).toEqual('8,10,12,15,16,17,18,19,20,30')
-
+        expect([...tree.inOrderTraverse()].toString()).toEqual('8,10,12,15,16,17,18,19,20,30')
         // tree.postOrderTraverse() //-> 8 12 10 16 19 18 17 30 20 15
-        const postOrder = []
-        const postOrderTraverse = tree.postOrderTraverse()
-        while (true) {
-            const { done, value } = postOrderTraverse.next()
-            if (done) break
-            postOrder.push(value)
-        }
-        expect(postOrder.toString()).toEqual('8,12,10,16,19,18,17,30,20,15')
-
+        expect([...tree.postOrderTraverse()].toString()).toEqual('8,12,10,16,19,18,17,30,20,15')
         // tree.levelOrderTraverse() //-> 15 10 20 8 12 17 30 16 18 19
-        const levelOrder = []
-        const levelOrderTraverse = tree.levelOrderTraverse()
-        while (true) {
-            const { done, value } = levelOrderTraverse.next()
-            if (done) break
-            levelOrder.push(value)
-        }
-        expect(levelOrder.toString()).toEqual('15,10,20,8,12,17,30,16,18,19')
+        expect([...tree.levelOrderTraverse()].toString()).toEqual('15,10,20,8,12,17,30,16,18,19')
     })
 })

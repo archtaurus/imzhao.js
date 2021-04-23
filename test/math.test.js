@@ -17,16 +17,20 @@ describe('imzhao.math', () => {
 
     test('gcd', () => {
         const { gcd, gcdMany } = math
+        expect(gcd()).toBeNaN()
         expect(gcd(13, 7)).toEqual(1)
         expect(gcd(13, 13)).toEqual(13)
         expect(gcdMany(54, 24, 78)).toEqual(6)
+        expect(gcdMany()).toBeNaN()
     })
 
     test('lcm', () => {
         const { lcm, lcmMany } = math
+        expect(lcm()).toBeNaN()
         expect(lcm(13, 13)).toEqual(13)
         expect(lcm(30, 45)).toEqual(90)
         expect(lcmMany(4, 6, 8)).toEqual(24)
+        expect(lcmMany()).toBeNaN()
     })
 
     test('random', () => {

@@ -14,13 +14,11 @@ The Zhao's node package.
 ## Install
 
 ``` shell
-npm i -g imzhao
+$ npm i -g imzhao
 ```
 
 ## Usage
 
-### CLI
-
 ``` shell
-imzhao --help
+$ imzhao --help
 ```

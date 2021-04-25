@@ -2,12 +2,11 @@
 const { math } = require('../lib')
 
 describe('imzhao.math', () => {
-    const { PI, TAU, HALF_PI, PI1M, piGenerator } = math
+    const { PI, TAU, HALF_PI, piGenerator } = math
     test('pi and piGenerator', () => {
         expect(PI).toEqual(Math.PI)
         expect(TAU).toEqual(Math.PI * 2)
         expect(HALF_PI).toEqual(Math.PI / 2)
-
         const pi50 = '3.14159265358979323846264338327950288419716939937510'
         const pi100 = '3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679'
         const pi1000 =
@@ -34,7 +33,6 @@ describe('imzhao.math', () => {
         expect([3, '.', ...piGenerator(50)].join('')).toEqual(pi50)
         expect([3, '.', ...piGenerator(100)].join('')).toEqual(pi100)
         expect([3, '.', ...piGenerator(1000)].join('')).toEqual(pi1000)
-        // expect([3, '.', ...piGenerator(1000000)].join('')).toEqual(PI1M)
     })
 
     test('abs', () => {

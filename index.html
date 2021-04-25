@@ -34,6 +34,30 @@
                 <button onclick="showPi(1000)">1000 digits</button>
                 <p id="pi" style="word-wrap: break-word; padding: 1rem; min-height: 10rem; background-color: #f5f2f0"></p>
             </div>
+            <div>
+                <h1># stack</h1>
+                <p>module> lib/datastructure/stack.js</p>
+                <p>> example code</p>
+                <pre><code class="language-javascript">function checkBaskets() {
+    function isPaired(string) {
+        const stack = new Stack()
+        for (let c of string) {
+            if (/[\(\[\{]/.test(c)) stack.push(c)
+            else if (/[\)\]\}]/.test(c)) {
+                const pair = stack.pop()
+                if (c === ')' && pair !== '(') return false
+                if (c === ']' && pair !== '[') return false
+                if (c === '}' && pair !== '{') return false
+            }
+        }
+        return stack.isEmpty()
+    }
+    alert(isPaired(baskets.value) ? 'valid' : 'invalid')
+}</code></pre>
+                <p>> live demo</p>
+                <input id="baskets" type="text" value="{[()]}" />
+                <button onclick="checkBaskets()">check baskets</button>
+            </div>
             <hr />
             <div>
                 <h1># 算24点</h1>
@@ -107,9 +131,28 @@
         </main>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
         <script src="lib/math/pi.js"></script>
+        <script src="lib/datastructure/stack.js"></script>
         <script src="lib/algorithm/calc24.js"></script>
         <script defer>
             const showPi = (n) => (pi.innerText = '3.' + [...piGenerator(n)].join(''))
+
+            function checkBaskets() {
+                function isPaired(string) {
+                    const stack = new Stack()
+                    for (let c of string) {
+                        if (/[\(\[\{]/.test(c)) stack.push(c)
+                        else if (/[\)\]\}]/.test(c)) {
+                            const pair = stack.pop()
+                            if (c === ')' && pair !== '(') return false
+                            if (c === ']' && pair !== '[') return false
+                            if (c === '}' && pair !== '{') return false
+                        }
+                    }
+                    return stack.isEmpty()
+                }
+                alert(isPaired(baskets.value) ? 'valid' : 'invalid')
+            }
+
             const calculate24 = () => {
                 const results = calc24(card1.value, card2.value, card3.value, card4.value)
                 calc24results.innerHTML = results.join('<br>')

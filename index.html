@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>imzhao.js examples</title>
+        <link rel="shortcut icon" href="data:" type="image/x-icon" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css"
+            integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
+            crossorigin="anonymous"
+        />
+        <style>
+            body {
+                font-family: 'Ubuntu Mono', 'Courier New', Courier, monospace;
+            }
+            main {
+                margin: auto;
+                max-width: 1024px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div>
+                <h1># pi</h1>
+                <p>module> lib/math/pi.js</p>
+                <p>> example code</p>
+                <pre><code class="language-javascript">const showPi = (n) => (pi.innerText = '3.' + [...piGenerator(n)].join(''))</code></pre>
+                <p>> live demo</p>
+                <button onclick="showPi(10)">10 digits</button>
+                <button onclick="showPi(100)">100 digits</button>
+                <button onclick="showPi(1000)">1000 digits</button>
+                <p id="pi" style="word-wrap: break-word; padding: 1rem; min-height: 10rem; background-color: #f5f2f0"></p>
+            </div>
+            <hr />
+            <div>
+                <h1># 算24点</h1>
+                <p>module> lib/algorithm/calc24.js</p>
+                <p>> example code</p>
+                <pre><code class="language-javascript">calc24results.innerHTML = calc24(card1.value, card2.value, card3.value, card4.value).join('&lt;br/&gt;')</code></pre>
+                <p>> live demo</p>
+                <select name="card1" id="card1">
+                    <option value="1">A</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">J</option>
+                    <option value="12">Q</option>
+                    <option value="13">K</option>
+                </select>
+                <select name="card2" id="card2">
+                    <option value="1">A</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">J</option>
+                    <option value="12">Q</option>
+                    <option value="13">K</option>
+                </select>
+                <select name="card3" id="card3">
+                    <option value="1">A</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">J</option>
+                    <option value="12">Q</option>
+                    <option value="13">K</option>
+                </select>
+                <select name="card4" id="card4">
+                    <option value="1">A</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">J</option>
+                    <option value="12">Q</option>
+                    <option value="13">K</option>
+                </select>
+                <button onclick="calculate24()">click to calculate 24 points</button>
+                <p id="calc24results" style="word-wrap: break-word; padding: 1rem; min-height: 10rem; background-color: #f5f2f0"></p>
+            </div>
+        </main>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+        <script src="lib/math/pi.js"></script>
+        <script src="lib/algorithm/calc24.js"></script>
+        <script defer>
+            const showPi = (n) => (pi.innerText = '3.' + [...piGenerator(n)].join(''))
+            const calculate24 = () => {
+                const results = calc24(card1.value, card2.value, card3.value, card4.value)
+                calc24results.innerHTML = results.join('<br>')
+            }
+        </script>
+    </body>
+</html>

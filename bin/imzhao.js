@@ -29,6 +29,13 @@ program
     })
 
 program
+    .command('calc24 <a> <b> <c> <d>')
+    .description('Calculate 24 points.')
+    .action((a, b, c, d) => {
+        for (const result of imzhao.algorithm.calc24(a, b, c, d)) console.log(result)
+    })
+
+program
     .command('publicip')
     .description('Show your public IP address.')
     .action(async () => {

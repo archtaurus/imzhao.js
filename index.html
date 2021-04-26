@@ -154,8 +154,7 @@
             }
 
             const calculate24 = () => {
-                const results = calc24(card1.value, card2.value, card3.value, card4.value)
-                calc24results.innerHTML = results.join('<br>')
+                calc24results.innerHTML = calc24(card1.value, card2.value, card3.value, card4.value).join('<br>')
             }
         </script>
     </body>

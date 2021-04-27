@@ -14,21 +14,25 @@ describe('imzhao.datastructure.stack', () => {
 
     test('push', () => {
         const stack = new Stack()
-        stack.push(1)
+        expect(stack.push()).toBeFalsy()
+        expect(stack.push(1)).toBeTruthy()
         expect(stack.size()).toEqual(1)
-        expect(stack.toString()).toEqual('1')
-        stack.push(2)
-        expect(stack.toString()).toEqual('1,2')
+        expect(stack.values()).toEqual([1])
+        expect(stack.push(2)).toBeTruthy()
+        expect(stack.size()).toEqual(2)
+        expect(stack.values()).toEqual([1, 2])
     })
 
     test('pop', () => {
         const stack = new Stack([1, 2, 3])
+        expect(stack.size()).toEqual(3)
         expect(stack.pop()).toEqual(3)
         expect(stack.size()).toEqual(2)
         expect(stack.pop()).toEqual(2)
         expect(stack.size()).toEqual(1)
         expect(stack.pop()).toEqual(1)
         expect(stack.size()).toEqual(0)
+        expect(stack.isEmpty()).toBeTruthy()
         expect(stack.pop()).toBeUndefined()
     })
 
@@ -39,6 +43,14 @@ describe('imzhao.datastructure.stack', () => {
         expect(stack.peek()).toEqual(1)
         stack.push(2)
         expect(stack.peek()).toEqual(2)
+    })
+
+    test('extends', () => {
+        const stack = new Stack([1])
+        expect(stack.peek()).toEqual(1)
+        expect(stack.extends()).toBeFalsy()
+        expect(stack.extends([2, 3])).toBeTruthy()
+        expect(stack.values()).toEqual([1, 2, 3])
     })
 
     test('clear to empty', () => {

@@ -8,7 +8,7 @@ program
     .description('Output n digits of pi.')
     .action((n) => {
         process.stdout.write('3.')
-        for (const d of imzhao.math.piGenerator(n)) process.stdout.write(`${d}`)
+        for (const d of imzhao.math.piGenerator(n)) process.stdout.write(d.toString())
         process.stdout.write('\n')
     })
 

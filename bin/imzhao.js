@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const { version, description } = require('../package.json')
+const { version } = require('../package.json')
 const { program } = require('commander')
 const imzhao = require('../lib')
 

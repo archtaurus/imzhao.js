@@ -28,6 +28,13 @@ describe('#constructor', () => {
     })
 })
 
+describe('#values', () => {
+    it('should return all values in an array', () => {
+        const list = new LinkedList([1, 2, 3])
+        expect(list.values()).toEqual([1, 2, 3])
+    })
+})
+
 describe('#prepend', () => {
     describe('with no parameter', () => {
         it('should do nothing to the list and return null', () => {
@@ -242,14 +249,6 @@ describe('#index', () => {
 //     expect(behind.prev).toEqual(middle)
 // })
 
-// test('indexOf', () => {
-//     const list = new LinkedList([0, 1, 2])
-//     expect(list.indexOf(0)).toEqual(0)
-//     expect(list.indexOf(1)).toEqual(1)
-//     expect(list.indexOf(2)).toEqual(2)
-//     expect(list.indexOf(3)).toEqual(-1)
-// })
-
 // test('update', () => {
 //     const list = new LinkedList([0, 1, 2])
 //     expect(list.set(-1, 'hello')).toBeFalsy()
@@ -320,9 +319,4 @@ describe('#index', () => {
 //     expect(list.values(true)).toEqual([])
 // })
 
-// test('values', () => {
-//     const list = new LinkedList([1, 2, 3])
-//     expect(list.values()).toEqual([1, 2, 3])
-//     expect(list.values((reverse = true))).toEqual([3, 2, 1])
-// })
 // })

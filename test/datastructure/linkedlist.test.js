@@ -207,22 +207,6 @@ describe('#get', () => {
     })
 })
 
-// test('get and getNode', () => {
-//     const list = new LinkedList([1, 2, 3])
-//     expect(list.getNode(0).data).toEqual(1)
-//     expect(list.get(0)).toEqual(1)
-//     expect(list.getNode(1).data).toEqual(2)
-//     expect(list.get(1)).toEqual(2)
-//     expect(list.getNode(2).data).toEqual(3)
-//     expect(list.get(2)).toEqual(3)
-//     expect(list.getNode(3)).toBeNull()
-//     expect(list.get(3)).toBeNull()
-//     expect(list.getNode(-1)).toBeNull()
-//     expect(list.get(-1)).toBeNull()
-//     expect(list.getNode()).toBeNull()
-//     expect(list.get()).toBeNull()
-// })
-
 // test('insert to empty list', () => {
 //     const list = new LinkedList()
 //     const data = 'hello'
@@ -292,7 +276,7 @@ describe('#get', () => {
 //     expect(list.get(2)).toEqual('hello')
 // })
 
-// test('removeAt', () => {
+// test('remove', () => {
 //     const list = new LinkedList()
 //     expect(list.removeAt(-1)).toBeFalsy()
 //     expect(list.removeAt(0)).toBeFalsy()

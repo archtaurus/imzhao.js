@@ -181,7 +181,7 @@ describe('#node', () => {
     const node0 = list.append(0)
     const node1 = list.append(1)
     const node2 = list.append(2)
-    test('should return null when parameter is invalid', () => {
+    test('should return null with invalid index', () => {
         expect(list.node('test')).toBeNull()
         expect(list.node(-1)).toBeNull()
         expect(list.node(3)).toBeNull()
@@ -195,7 +195,7 @@ describe('#node', () => {
 
 describe('#get', () => {
     const list = new LinkedList([0, 1, 2])
-    test('should return undefined when index is invalid', () => {
+    test('should return undefined with invalid index', () => {
         expect(list.get('test')).toBeUndefined()
         expect(list.get('-1')).toBeUndefined()
         expect(list.get('3')).toBeUndefined()

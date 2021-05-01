@@ -176,6 +176,23 @@ describe('#index', () => {
     })
 })
 
+describe('#node', () => {
+    const list = new LinkedList()
+    const node0 = list.append(0)
+    const node1 = list.append(1)
+    const node2 = list.append(2)
+    test('should return null when parameter is invalid', () => {
+        expect(list.node('test')).toBeNull()
+        expect(list.node(-1)).toBeNull()
+        expect(list.node(3)).toBeNull()
+    })
+    test('should return node by index', () => {
+        expect(list.node(0)).toEqual(node0)
+        expect(list.node(1)).toEqual(node1)
+        expect(list.node(2)).toEqual(node2)
+    })
+})
+
 // test('get and getNode', () => {
 //     const list = new LinkedList([1, 2, 3])
 //     expect(list.getNode(0).data).toEqual(1)

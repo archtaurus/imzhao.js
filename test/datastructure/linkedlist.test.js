@@ -193,6 +193,20 @@ describe('#node', () => {
     })
 })
 
+describe('#get', () => {
+    const list = new LinkedList([0, 1, 2])
+    test('should return undefined when index is invalid', () => {
+        expect(list.get('test')).toBeUndefined()
+        expect(list.get('-1')).toBeUndefined()
+        expect(list.get('3')).toBeUndefined()
+    })
+    test('should return data by index', () => {
+        expect(list.get(0)).toEqual(0)
+        expect(list.get(1)).toEqual(1)
+        expect(list.get(2)).toEqual(2)
+    })
+})
+
 // test('get and getNode', () => {
 //     const list = new LinkedList([1, 2, 3])
 //     expect(list.getNode(0).data).toEqual(1)

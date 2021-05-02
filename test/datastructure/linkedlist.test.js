@@ -91,6 +91,71 @@ describe('#append', () => {
     })
 })
 
+describe('#insert', () => {
+    describe('insert to empty list', () => {
+        const list = new LinkedList()
+        test('should return null with no data', () => {
+            expect(list.insert()).toBeNull()
+        })
+        test('should return null with invalid index', () => {
+            expect(list.insert(1, 'data')).toBeNull()
+            expect(list.insert(-1, 'data')).toBeNull()
+        })
+        test('insert to 0 index works', () => {
+            const data = 'hello'
+            const node = list.insert(0, data)
+            expect(node.data).toEqual(data)
+            expect(node.prev).toBeNull()
+            expect(node.next).toBeNull()
+            expect(list.head).toEqual(node)
+            expect(list.tail).toEqual(node)
+        })
+    })
+    describe('insert data to list size of 1 at 0 index', () => {
+        test('node should be at the head', () => {
+            const list = new LinkedList()
+            const node1 = list.append(1)
+            const data = 0
+            const node0 = list.insert(0, data)
+            expect(node0.data).toEqual(data)
+            expect(list.head).toEqual(node0)
+            expect(node0.prev).toBeNull()
+            expect(node0.next).toEqual(node1)
+            expect(node1.prev).toEqual(node0)
+            expect(node1.next).toBeNull()
+        })
+    })
+    describe('insert data to list size of 1 at 1 index', () => {
+        test('node should be at the tail', () => {
+            const list = new LinkedList()
+            const node0 = list.append(0)
+            const data = 1
+            const node1 = list.insert(1, data)
+            expect(node1.data).toEqual(data)
+            expect(list.tail).toEqual(node1)
+            expect(node0.prev).toBeNull()
+            expect(node0.next).toEqual(node1)
+            expect(node1.prev).toEqual(node0)
+            expect(node1.next).toBeNull()
+        })
+    })
+    describe('insert node to list in the middle', () => {
+        test('works', () => {
+            const list = new LinkedList()
+            const front = list.append('front')
+            const behind = list.append('behind')
+            expect(list.insert(-1, 1)).toBeNull()
+            expect(list.insert(3, 1)).toBeNull()
+            const middle = list.insert(1, 'middle')
+            expect(middle.data).toEqual('middle')
+            expect(front.next).toEqual(middle)
+            expect(middle.prev).toEqual(front)
+            expect(middle.next).toEqual(behind)
+            expect(behind.prev).toEqual(middle)
+        })
+    })
+})
+
 describe('#shift', () => {
     describe('from an empty list', () => {
         it('should return undefined', () => {
@@ -149,6 +214,27 @@ describe('#pop', () => {
     })
 })
 
+describe('#remove', () => {
+    test('return undefined with invalid index', () => {
+        const list = new LinkedList()
+        expect(list.remove()).toBeUndefined()
+        expect(list.remove(0)).toBeUndefined()
+    })
+    test('return the only data and leave an empty list', () => {
+        const list = new LinkedList([1])
+        expect(list.remove(0)).toEqual(1)
+        expect(list.length).toEqual(0)
+    })
+
+    test('remove works', () => {
+        const list = new LinkedList([1, 2, 3, 4, 5])
+        expect(list.remove(0)).toEqual(1)
+        expect(list.remove(1)).toEqual(3)
+        expect(list.remove(2)).toEqual(5)
+        expect(list.values()).toEqual([2, 4])
+    })
+})
+
 describe('#index', () => {
     describe('with no parameter', () => {
         const list = new LinkedList([1, 2, 3])
@@ -173,6 +259,19 @@ describe('#index', () => {
         it('should return the index of node for that data', () => {
             expect(list.index(3)).toEqual(2)
         })
+    })
+})
+
+describe('#contains', () => {
+    const list = new LinkedList([1, 2, 3])
+    it('should return false with no parameter', () => {
+        expect(list.contains()).toBeFalsy()
+    })
+    it('should return false when not found', () => {
+        expect(list.contains(0)).toBeFalsy()
+    })
+    it('should return true when found', () => {
+        expect(list.contains(1)).toBeTruthy()
     })
 })
 
@@ -207,131 +306,23 @@ describe('#get', () => {
     })
 })
 
-// test('insert to empty list', () => {
-//     const list = new LinkedList()
-//     const data = 'hello'
-//     expect(list.insert(1, data)).toBeNull()
-//     expect(list.insert(-1, data)).toBeNull()
-//     const node = list.insert(0, data)
-//     expect(node.data).toEqual(data)
-//     expect(node.prev).toBeNull()
-//     expect(node.next).toBeNull()
-//     expect(list.head).toEqual(node)
-//     expect(list.tail).toEqual(node)
-// })
-
-// test('insert node to list size of 1 at 0', () => {
-//     const list = new LinkedList()
-//     const node1 = list.append(1)
-//     const data = 0
-//     expect(list.insert(-1, data)).toBeNull()
-//     expect(list.insert(2, data)).toBeNull()
-//     const node0 = list.insert(0, data)
-//     expect(node0.data).toEqual(data)
-//     expect(list.head).toEqual(node0)
-//     expect(node0.prev).toBeNull()
-//     expect(node0.next).toEqual(node1)
-//     expect(node1.prev).toEqual(node0)
-//     expect(node1.next).toBeNull()
-// })
-
-// test('insert node to list size of 1 at 1', () => {
-//     const list = new LinkedList()
-//     const node0 = list.append(0)
-//     const data = 1
-//     expect(list.insert(-1, 1)).toBeNull()
-//     expect(list.insert(2, data)).toBeNull()
-//     const node1 = list.insert(1, data)
-//     expect(node1.data).toEqual(data)
-//     expect(list.tail).toEqual(node1)
-//     expect(node0.prev).toBeNull()
-//     expect(node0.next).toEqual(node1)
-//     expect(node1.prev).toEqual(node0)
-//     expect(node1.next).toBeNull()
-// })
-
-// test('insert node to list in the middle', () => {
-//     const list = new LinkedList()
-//     const front = list.append('front')
-//     const behind = list.append('behind')
-//     expect(list.insert(-1, 1)).toBeNull()
-//     expect(list.insert(3, 1)).toBeNull()
-//     const middle = list.insert(1, 'middle')
-//     expect(middle.data).toEqual('middle')
-//     expect(front.next).toEqual(middle)
-//     expect(middle.prev).toEqual(front)
-//     expect(middle.next).toEqual(behind)
-//     expect(behind.prev).toEqual(middle)
-// })
-
-// test('update', () => {
-//     const list = new LinkedList([0, 1, 2])
-//     expect(list.set(-1, 'hello')).toBeFalsy()
-//     expect(list.set(3, 'hello')).toBeFalsy()
-//     expect(list.set(0, 'hello')).toBeTruthy()
-//     expect(list.set(1, 'hello')).toBeTruthy()
-//     expect(list.set(2, 'hello')).toBeTruthy()
-//     expect(list.get(0)).toEqual('hello')
-//     expect(list.get(1)).toEqual('hello')
-//     expect(list.get(2)).toEqual('hello')
-// })
-
-// test('remove', () => {
-//     const list = new LinkedList()
-//     expect(list.removeAt(-1)).toBeFalsy()
-//     expect(list.removeAt(0)).toBeFalsy()
-//     expect(list.removeAt(1)).toBeFalsy()
-//     list.append(1)
-//     list.append(2)
-//     expect(list.removeAt(0)).toBeTruthy()
-//     expect(list.head.next).toBeNull()
-//     expect(list.head.prev).toBeNull()
-//     expect(list.head.data).toEqual(2)
-//     expect(list.tail.data).toEqual(2)
-//     expect(list.length).toEqual(1)
-//     list.append(3)
-//     expect(list.removeAt(1)).toBeTruthy()
-//     expect(list.head.next).toBeNull()
-//     expect(list.head.prev).toBeNull()
-//     expect(list.head.data).toEqual(2)
-//     expect(list.tail.data).toEqual(2)
-//     expect(list.length).toEqual(1)
-//     expect(list.removeAt(0)).toBeTruthy()
-//     expect(list.head).toBeNull()
-//     expect(list.tail).toBeNull()
-//     expect(list.length).toEqual(0)
-//     list.append(0)
-//     list.append(1)
-//     list.append(2)
-//     list.append(3)
-//     list.append(4)
-//     expect(list.removeAt(5)).toBeFalsy()
-//     expect(list.length).toEqual(5)
-//     expect(list.removeAt(4)).toBeTruthy()
-//     expect(list.length).toEqual(4)
-//     expect(list.values()).toEqual([0, 1, 2, 3])
-//     expect(list.removeAt(0)).toBeTruthy()
-//     expect(list.length).toEqual(3)
-//     expect(list.values()).toEqual([1, 2, 3])
-//     expect(list.removeAt(1)).toBeTruthy()
-//     expect(list.length).toEqual(2)
-//     expect(list.values()).toEqual([1, 3])
-// })
-
-// test('remove', () => {
-//     const list = new LinkedList([1, 2, 3, 4, 5])
-//     list.remove(1)
-//     list.remove(3)
-//     list.remove(5)
-//     expect(list.values()).toEqual([2, 4])
-//     list.remove(2)
-//     expect(list.values()).toEqual([4])
-//     list.append(2)
-//     list.remove(4)
-//     expect(list.values()).toEqual([2])
-//     list.remove(2)
-//     expect(list.values()).toEqual([])
-//     expect(list.values(true)).toEqual([])
-// })
-
-// })
+describe('#set', () => {
+    const list = new LinkedList([0, 0, 0, 0, 0])
+    test('should return false with invalid parameter', () => {
+        expect(list.set()).toBeFalsy()
+        expect(list.set(1)).toBeFalsy()
+        expect(list.set(-1, 1)).toBeFalsy()
+        expect(list.set(5, 1)).toBeFalsy()
+    })
+    test('should return true with valid parameter', () => {
+        expect(list.set(0, 1)).toBeTruthy()
+        expect(list.set(2, 1)).toBeTruthy()
+        expect(list.set(4, 1)).toBeTruthy()
+        expect(list.values()).toEqual([1, 0, 1, 0, 1])
+    })
+    test('.first and .last can set value', () => {
+        list.first = 2
+        list.last = 2
+        expect(list.values()).toEqual([2, 0, 1, 0, 2])
+    })
+})

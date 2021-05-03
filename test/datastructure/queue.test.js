@@ -18,11 +18,10 @@ describe('imzhao.datastructure.queue', () => {
         expect(queue.length).toEqual(3)
         expect(queue.head).toEqual(1)
         expect(queue.tail).toEqual(3)
-        expect(queue.isEmpty).toBeFalsy()
+        expect(queue.values()).toEqual([1, 2, 3])
     })
 
     test('dequeue', () => {
-        expect(queue.head).toEqual(1)
         expect(queue.dequeue()).toEqual(1)
         expect(queue.head).toEqual(2)
         expect(queue.dequeue()).toEqual(2)
@@ -32,13 +31,12 @@ describe('imzhao.datastructure.queue', () => {
     })
 
     test('clear to empty', () => {
-        expect(queue.head).toEqual(3)
         queue.clear()
         expect(queue.head).toBeUndefined()
         expect(queue.tail).toBeUndefined()
-        expect(queue.dequeue()).toBeUndefined()
         expect(queue.length).toEqual(0)
         expect(queue.isEmpty).toBeTruthy()
+        expect(queue.dequeue()).toBeUndefined()
     })
 })
 

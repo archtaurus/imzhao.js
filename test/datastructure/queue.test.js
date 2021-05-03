@@ -4,7 +4,6 @@ describe('imzhao.datastructure.queue', () => {
     const queue = new Queue()
     test('create', () => {
         expect(queue.length).toEqual(0)
-        expect(queue.isEmpty).toBeTruthy()
         expect(queue.head).toBeUndefined()
         expect(queue.tail).toBeUndefined()
     })
@@ -35,61 +34,62 @@ describe('imzhao.datastructure.queue', () => {
         expect(queue.head).toBeUndefined()
         expect(queue.tail).toBeUndefined()
         expect(queue.length).toEqual(0)
-        expect(queue.isEmpty).toBeTruthy()
         expect(queue.dequeue()).toBeUndefined()
     })
 })
 
 describe('imzhao.datastructure.priorityQueue', () => {
-    // const priorityQueue = new PriorityQueue()
-    // const elementLow = 'low'
-    // const priorityLow = 1
-    // const elementMid = 'mid'
-    // const priorityMid = 10
-    // const elementHigh = 'high'
-    // const priorityHigh = 100
-    // test('create', () => {
-    //     expect(priorityQueue.length).toEqual(0)
-    //     expect(priorityQueue.head).toBeUndefined()
-    //     expect(priorityQueue.tail).toBeUndefined()
-    //     expect(priorityQueue.isEmpty).toBeTruthy()
-    // })
-    // test('enqueue', () => {
-    //     priorityQueue.enqueue(elementMid, priorityMid)
-    //     expect(priorityQueue.length).toEqual(1)
-    //     expect(priorityQueue.isEmpty).toBeFalsy()
-    //     expect(priorityQueue.head.element).toEqual(elementMid)
-    //     expect(priorityQueue.head.priority).toEqual(priorityMid)
-    //     expect(priorityQueue.tail.element).toEqual(elementMid)
-    //     expect(priorityQueue.tail.priority).toEqual(priorityMid)
-    // })
-    // test('enqueue lower priority', () => {
-    //     priorityQueue.enqueue(elementLow, priorityLow)
-    //     expect(priorityQueue.length).toEqual(2)
-    //     expect(priorityQueue.head.element).toEqual(elementMid)
-    //     expect(priorityQueue.head.priority).toEqual(priorityMid)
-    //     expect(priorityQueue.tail.element).toEqual(elementLow)
-    //     expect(priorityQueue.tail.priority).toEqual(priorityLow)
-    // })
-    // test('enqueue higher priority', () => {
-    //     priorityQueue.enqueue(elementHigh, priorityHigh)
-    //     expect(priorityQueue.length).toEqual(3)
-    //     expect(priorityQueue.head.element).toEqual(elementHigh)
-    //     expect(priorityQueue.head.priority).toEqual(priorityHigh)
-    //     expect(priorityQueue.tail.element).toEqual(elementLow)
-    //     expect(priorityQueue.tail.priority).toEqual(priorityLow)
-    // })
-    // test('enqueue higher priority', () => {
-    //     priorityQueue.enqueue(5, 5)
-    //     expect(priorityQueue.toArray()).toEqual(['mid', 5, 'low'])
-    //     priorityQueue.enqueue(elementHigh, priorityHigh)
-    //     expect(priorityQueue.toString()).toEqual('high,mid,5,low')
-    //     expect(priorityQueue.peek()).toEqual(elementHigh)
-    //     expect(priorityQueue.dequeue()).toEqual(elementHigh)
-    // })
-    // test('clear to empty', () => {
-    //     priorityQueue.clear()
-    //     expect(priorityQueue.size()).toEqual(0)
-    //     expect(priorityQueue.isEmpty()).toBeTruthy()
-    // })
+    const priorityQueue = new PriorityQueue()
+    const elementLow = 'low'
+    const priorityLow = 1
+    const elementMid = 'mid'
+    const priorityMid = 10
+    const elementHigh = 'high'
+    const priorityHigh = 100
+
+    test('create', () => {
+        expect(priorityQueue.length).toEqual(0)
+        expect(priorityQueue.min).toBeUndefined()
+        expect(priorityQueue.max).toBeUndefined()
+        expect(priorityQueue.values()).toEqual([])
+    })
+
+    test('enqueue', () => {
+        priorityQueue.enqueue(elementMid, priorityMid)
+        expect(priorityQueue.length).toEqual(1)
+        expect(priorityQueue.min).toEqual(elementMid)
+        expect(priorityQueue.max).toEqual(elementMid)
+        expect(priorityQueue.values()).toEqual([elementMid])
+    })
+
+    test('enqueue lower priority', () => {
+        priorityQueue.enqueue(elementLow, priorityLow)
+        expect(priorityQueue.length).toEqual(2)
+        expect(priorityQueue.min).toEqual(elementLow)
+        expect(priorityQueue.max).toEqual(elementMid)
+        expect(priorityQueue.values()).toEqual([elementLow, elementMid])
+    })
+
+    test('enqueue higher priority', () => {
+        priorityQueue.enqueue(elementHigh, priorityHigh)
+        expect(priorityQueue.length).toEqual(3)
+        expect(priorityQueue.min).toEqual(elementLow)
+        expect(priorityQueue.max).toEqual(elementHigh)
+        expect(priorityQueue.values()).toEqual([elementLow, elementMid, elementHigh])
+    })
+
+    test('dequeuemin', () => {
+        expect(priorityQueue.dequeuemin()).toEqual(elementLow)
+        expect(priorityQueue.length).toEqual(2)
+    })
+
+    test('dequeuemax', () => {
+        expect(priorityQueue.dequeuemax()).toEqual(elementHigh)
+        expect(priorityQueue.length).toEqual(1)
+    })
+
+    test('clear to empty', () => {
+        priorityQueue.clear()
+        expect(priorityQueue.length).toEqual(0)
+    })
 })

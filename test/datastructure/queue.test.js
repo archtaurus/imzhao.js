@@ -78,6 +78,18 @@ describe('imzhao.datastructure.priorityQueue', () => {
         expect(priorityQueue.values()).toEqual([elementLow, elementMid, elementHigh])
     })
 
+    test('delete', () => {
+        const q = new PriorityQueue()
+        q.enqueue(3, 9)
+        q.enqueue(6, 5)
+        q.enqueue(9, 3)
+        expect(q.delete()).toBeUndefined()
+        expect(q.delete(10)).toBeUndefined()
+        expect(q.delete(6)).toEqual({ element: 6, priority: 5 })
+        expect(q.length).toEqual(2)
+        expect(q.values()).toEqual([9, 3])
+    })
+
     test('dequeuemin', () => {
         expect(priorityQueue.dequeuemin()).toEqual(elementLow)
         expect(priorityQueue.length).toEqual(2)
